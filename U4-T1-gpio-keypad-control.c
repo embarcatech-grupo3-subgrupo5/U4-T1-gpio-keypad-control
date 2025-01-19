@@ -25,6 +25,14 @@ void ligar_led_B(){
 void ligar_led_G(){
     gpio_put(GREEN, true);
 }
+void init_buzz(){
+    gpio_init(RED);
+    gpio_set_dir(RED, GPIO_OUT);
+    gpio_init(GREEN);
+    gpio_set_dir(GREEN, GPIO_OUT);
+    gpio_init(BLUE);
+    gpio_set_dir(BLUE, GPIO_OUT);
+}
 
 
 int main()
