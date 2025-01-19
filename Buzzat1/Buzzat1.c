@@ -1,29 +1,30 @@
 #include <stdio.h>
 #include "pico/stdlib.h"
 
-// Definir o pino do buzzer
-#define BUZZER 21
+// Definição do pino do buzzer
+#define BUZZER_PIN 21
 
-void setup_gpio() {
-    gpio_set_function(BUZZER, GPIO_FUNC_PWM); // Configura o buzzer como saída PWM
+// Função para configurar o buzzer como saída
+void setup_buzzer() {
+    gpio_init(BUZZER_PIN);         // Inicializa o pino do buzzer
+    gpio_set_dir(BUZZER_PIN, GPIO_OUT); // Define como saída
 }
 
-void tocar_buzzer(uint frequency, float duration) {
-    uint slice_num = pwm_gpio_to_slice_num(BUZZER);
-    pwm_set_wrap(slice_num, 125000000 / frequency);  // Define a frequência
-    pwm_set_chan_level(slice_num, pwm_gpio_to_channel(BUZZER), 32768); // Volume
-    pwm_set_enabled(slice_num, true);  // Liga o PWM
-    sleep_ms((int)(duration * 1000));  // Duração do som
-    pwm_set_enabled(slice_num, false); // Desliga o PWM
+// Função para tocar o buzzer
+void play_buzzer(int duration_ms) {
+    gpio_put(BUZZER_PIN, 1); // Liga o buzzer
+    sleep_ms(duration_ms);   // Mantém ligado pelo tempo especificado
+    gpio_put(BUZZER_PIN, 0); // Desliga o buzzer
 }
 
 int main() {
-    stdio_init_all();
-    setup_gpio(); // Configura os GPIOs
+    stdio_init_all(); // Inicializa a interface padrão
+    setup_buzzer();   // Configura o pino do buzzer
 
-    printf("Teste do buzzer no GPIO 21.\n");
-    tocar_buzzer(440, 1.0); // Som de 1 segundo em 440 Hz
-    sleep_ms(1000);
-    tocar_buzzer(880, 1.0); // Som de 1 segundo em 880 Hz
-    return 0;
+    printf("Iniciando o controle do buzzer...\n");
 }
+    while (1) {
+        printf("Buzzer ligado por 1 segundo...\n");
+        play_buzzer(1000); // Liga o buzzer por 1 segundo
+        sleep_ms(1000);    // Espera 1 segundo antes de tocar novamente
+    }
