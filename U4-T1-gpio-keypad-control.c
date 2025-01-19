@@ -41,6 +41,7 @@ int main()
 {
     stdio_init_all();
     init_led();
+    init_buzzer();
 
 
     /** @todo implementar leitura de teclada matricial */
