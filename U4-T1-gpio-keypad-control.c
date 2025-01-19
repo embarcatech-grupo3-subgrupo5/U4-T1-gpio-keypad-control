@@ -4,6 +4,7 @@
 #define RED 13
 #define GREEN 11
 #define BLUE 12
+#define BUZZER 21
 
 void init_led(){
     gpio_init(RED);
@@ -12,6 +13,11 @@ void init_led(){
     gpio_set_dir(GREEN, GPIO_OUT);
     gpio_init(BLUE);
     gpio_set_dir(BLUE, GPIO_OUT);
+}
+
+void init_buzzer() {
+    gpio_init(BUZZER);
+    gpio_set_dir(BUZZER, GPIO_OUT);
 }
 
 void ligar_led_R(){
@@ -24,6 +30,10 @@ void ligar_led_B(){
 
 void ligar_led_G(){
     gpio_put(GREEN, true);
+}
+
+void ativar_buzzer() {
+    gpio_put(BUZZER, true);
 }
 
 
