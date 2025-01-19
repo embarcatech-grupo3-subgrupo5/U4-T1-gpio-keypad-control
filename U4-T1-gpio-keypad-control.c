@@ -110,8 +110,56 @@ void map_key_to_action(char key) {
             gpio_put(BLUE, false);
             break;
 
+        case '2': // Liga LED Verde
+            gpio_put(RED, false);
+            gpio_put(GREEN, true);
+            gpio_put(BLUE, false);
+            break;
+
+        case '3': // Liga LED Azul
+            gpio_put(RED, false);
+            gpio_put(GREEN, false);
+            gpio_put(BLUE, true);
+            break;
+
         case '4': // Desliga o LED Vermelho
             gpio_put(RED, false);
+            break;
+        
+        case '5': // Desliga o LED Verde
+            gpio_put(GREEN, false);
+            break;
+
+        case '6': // Desliga o LED Azul
+            gpio_put(BLUE, false);
+            break;
+
+        case '7': // Liga o LED Vermelho e desliga após 500ms
+            gpio_put(RED, true);
+            sleep_ms(500);
+            gpio_put(RED, false);
+            break;
+
+        case '8': // Liga o LED Verde e desliga após 500ms
+            gpio_put(GREEN, true);
+            sleep_ms(500);
+            gpio_put(GREEN, false);
+            break;
+
+        case '9': // Liga o LED Azul e desliga após 500ms
+            gpio_put(BLUE, true);
+            sleep_ms(500);
+            gpio_put(BLUE, false);
+            break;
+
+        case '0': // Inverte o estado de todos os LEDs
+            gpio_put(RED, !gpio_get(RED));
+            gpio_put(GREEN, !gpio_get(GREEN));
+            gpio_put(BLUE, !gpio_get(BLUE));
+            break;
+
+        default:
+            // Caso a tecla não esteja mapeada, não faz nada
             break;
     }
 }
