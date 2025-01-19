@@ -34,6 +34,9 @@ void ligar_led_G(){
 
 void ativar_buzzer() {
     gpio_put(BUZZER, true);
+    sleep_ms(3000);
+    gpio_put(BUZZER, false);
+    sleep_ms(3000);
 }
 
 
