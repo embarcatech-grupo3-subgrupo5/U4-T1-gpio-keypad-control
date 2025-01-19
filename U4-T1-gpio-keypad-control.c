@@ -16,6 +16,8 @@
 #define COL3 2
 #define COL4 1
 
+#define DEBOUNCE_TIME 60 // Tempo de debounce em ms, para evitar leituras incorretas ao pressionar rapidamente as teclas
+
 // Função para inicializar o teclado matricial
 void init_keypad() {
     // Configurar linhas como saída e desativá-las inicialmente
@@ -185,6 +187,6 @@ int main() {
             printf("Tecla pressionada: %c\n", key);
             map_key_to_action(key);
         }
-        sleep_ms(50);
+        sleep_ms(DEBOUNCE_TIME);
     }
 }
