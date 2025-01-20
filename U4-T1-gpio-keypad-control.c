@@ -171,6 +171,11 @@ void map_key_to_action(char key) {
             gpio_put(BLUE, !gpio_get(BLUE));
             break;
 
+        //Desenvolvida por: Geison
+        case '*': 
+            ativar_buzzer();
+            break;
+            
         default:
             printf("Tecla não mapeada: %c\n", key);
             break;
