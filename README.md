@@ -35,6 +35,8 @@ Tecla 9: Liga o LED azul por 500 ms.
 
 Tecla 0: Alterna o estado de todos os LEDs.
 
+Tecla *: Ativa o buzzer.
+
 ## Requisitos:
 
 Microcontrolador Raspberry Pi Pico W.
@@ -48,3 +50,24 @@ Ambiente de desenvolvimento configurado com Pico SDK.
 Compile e carregue o código no simulador Wokwi.
 
 Pressione as teclas no teclado matricial para acionar os LEDs.
+
+## Configuração do Ambiente
+
+Instale o Pico SDK seguindo a documentação oficial.
+
+Configure o simulador Wokwi para a Atividade .
+
+
+## Contribuição
+
+Clone o repositório.
+
+Crie um branch para suas alterações.
+
+Faça commits claros e frequentes.
+
+Envie um pull request para revisão.
+
+# Vídeo Demonstrativo
+
+Um vídeo mostrando o funcionamento do projeto está disponível no link: [https://drive.google.com/drive/folders/162CqwnEsd-BY1bFBg7GOnQ0X8qpqYdgB?usp=sharing]
