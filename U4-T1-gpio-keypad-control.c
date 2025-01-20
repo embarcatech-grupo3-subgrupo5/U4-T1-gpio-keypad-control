@@ -17,7 +17,7 @@
 #define COL3 2
 #define COL4 1
 
-#define DEBOUNCE_TIME 60 // Tempo de debounce em ms
+#define DEBOUNCE_TIME 60 // Tempo de debounce em ms, para evitar leituras incorretas ao pressionar rapidamente as teclas
 
 // Função para inicializar o teclado matricial
 void init_keypad() {
@@ -175,8 +175,9 @@ void map_key_to_action(char key) {
         case '*': 
             ativar_buzzer();
             break;
-            
+
         default:
+            // Caso a tecla não esteja mapeada, não faz nada
             printf("Tecla não mapeada: %c\n", key);
             break;
     }
