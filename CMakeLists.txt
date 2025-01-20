@@ -69,7 +69,7 @@ target_include_directories(U4-T1-gpio-keypad-control PRIVATE
 
 # Add any user requested libraries
 target_link_libraries(U4-T1-gpio-keypad-control 
-        
+        hardware_pwm
         )
 
 pico_add_extra_outputs(U4-T1-gpio-keypad-control)
