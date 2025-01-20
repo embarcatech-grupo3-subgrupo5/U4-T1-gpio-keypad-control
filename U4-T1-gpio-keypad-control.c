@@ -5,6 +5,7 @@
 #define RED 13
 #define GREEN 11
 #define BLUE 12
+#define BUZZER 21
 
 // Definição dos pinos do teclado matricial
 #define ROW1 8
@@ -16,26 +17,26 @@
 #define COL3 2
 #define COL4 1
 
-#define DEBOUNCE_TIME 60 // Tempo de debounce em ms, para evitar leituras incorretas ao pressionar rapidamente as teclas
+#define DEBOUNCE_TIME 60 // Tempo de debounce em ms
 
 // Função para inicializar o teclado matricial
 void init_keypad() {
     // Configurar linhas como saída e desativá-las inicialmente
     gpio_init(ROW1);
     gpio_set_dir(ROW1, GPIO_OUT);
-    gpio_put(ROW1, true); // Desativa linha 1
+    gpio_put(ROW1, true);
 
     gpio_init(ROW2);
     gpio_set_dir(ROW2, GPIO_OUT);
-    gpio_put(ROW2, true); // Desativa linha 2
+    gpio_put(ROW2, true);
 
     gpio_init(ROW3);
     gpio_set_dir(ROW3, GPIO_OUT);
-    gpio_put(ROW3, true); // Desativa linha 3
+    gpio_put(ROW3, true);
 
     gpio_init(ROW4);
     gpio_set_dir(ROW4, GPIO_OUT);
-    gpio_put(ROW4, true); // Desativa linha 4
+    gpio_put(ROW4, true);
 
     // Configurar colunas como entrada com pull-up
     gpio_init(COL1);
@@ -87,23 +88,33 @@ char read_keypad() {
     return ' '; // Nenhuma tecla pressionada
 }
 
-/*
-TODO: void map_key_to_action(char key)
-    Implementar a função map_key_to_action que recebe uma tecla pressionada e executa a ação correspondente.
-    As ações possíveis são:
-        - Ligar o LED vermelho (R) ao pressionar a tecla '1'
-        - Ligar o LED verde (G) ao pressionar a tecla '2'
-        - Ligar o LED azul (B) ao pressionar a tecla '3'
-        - Desligar o LED vermelho (R) ao pressionar a tecla '4'
-        - Desligar o LED verde (G) ao pressionar a tecla '5'
-        - Desligar o LED azul (B) ao pressionar a tecla '6'
-        - Ligar o LED vermelho (R) e desligar após 500ms ao pressionar a tecla '7'
-        - Ligar o LED verde (G) e desligar após 500ms ao pressionar a tecla '8'
-        - Ligar o LED azul (B)  e desligar após 500ms ao pressionar a tecla '9'
-        - Inverter o estado de Todos os LEDS ao pressionar a tecla '0'
- */
+// Função para inicializar os LEDs
+void init_led() {
+    gpio_init(RED);
+    gpio_set_dir(RED, GPIO_OUT);
+    gpio_init(GREEN);
+    gpio_set_dir(GREEN, GPIO_OUT);
+    gpio_init(BLUE);
+    gpio_set_dir(BLUE, GPIO_OUT);
+}
 
-//Exemplo do map key to action - Função que mapeia uma tecla a uma ação específica nos LEDs
+// Desenvolvida por: Mario Vinicius
+// Função para inicializar o buzzer
+void init_buzzer() {
+    gpio_init(BUZZER);
+    gpio_set_dir(BUZZER, GPIO_OUT);
+}
+
+// Desenvolvida por: Mario Vinicius
+// Função que ativa o buzzer por 3 segundos
+void ativar_buzzer() {
+    gpio_put(BUZZER, true);
+    sleep_ms(3000);
+    gpio_put(BUZZER, false);
+    sleep_ms(3000);
+}
+
+//------------------------------------------------------
 void map_key_to_action(char key) {
     switch (key) {
         case '1': // Liga LED Vermelho
@@ -127,7 +138,7 @@ void map_key_to_action(char key) {
         case '4': // Desliga o LED Vermelho
             gpio_put(RED, false);
             break;
-        
+
         case '5': // Desliga o LED Verde
             gpio_put(GREEN, false);
             break;
@@ -161,24 +172,15 @@ void map_key_to_action(char key) {
             break;
 
         default:
-            // Caso a tecla não esteja mapeada, não faz nada
+            printf("Tecla não mapeada: %c\n", key);
             break;
     }
-}
-
-// Função para inicializar os LEDs
-void init_led() {
-    gpio_init(RED);
-    gpio_set_dir(RED, GPIO_OUT);
-    gpio_init(GREEN);
-    gpio_set_dir(GREEN, GPIO_OUT);
-    gpio_init(BLUE);
-    gpio_set_dir(BLUE, GPIO_OUT);
 }
 
 int main() {
     stdio_init_all();
     init_led();
+    init_buzzer();
     init_keypad();
 
     while (true) {
