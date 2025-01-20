@@ -1,5 +1,5 @@
 # U4-T1-gpio-keypad-control
-# Tarefa 1 -Controle de pinos GPIO com oemprego de um teclado matricial. 
+## Tarefa 1 -Controle de pinos GPIO com o emprego de um teclado matricial. 
 ## Descrição
 Este projeto implementa o controle de pinos GPIO de um microcontrolador RP2040 utilizando:
 
