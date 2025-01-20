@@ -1,13 +1,15 @@
 #include <stdio.h>
 #include "pico/stdlib.h"
 
-// Definição dos pinos dos LEDs
+// Definição dos pinos dos LEDs - Emylle
 #define RED 13
 #define GREEN 11
 #define BLUE 12
+
+// Definição do pino do buzzer - Mario Vinicius
 #define BUZZER 21
 
-// Definição dos pinos do teclado matricial
+// Definição dos pinos do teclado matricial - Geison
 #define ROW1 8
 #define ROW2 7
 #define ROW3 6
@@ -17,8 +19,9 @@
 #define COL3 2
 #define COL4 1
 
-#define DEBOUNCE_TIME 60 // Tempo de debounce em ms, para evitar leituras incorretas ao pressionar rapidamente as teclas
+#define DEBOUNCE_TIME 60 // Tempo de debounce em ms, para evitar leituras incorretas ao pressionar rapidamente as teclas - Geison
 
+// Desenvolvida por: Geison
 // Função para inicializar o teclado matricial
 void init_keypad() {
     // Configurar linhas como saída e desativá-las inicialmente
@@ -56,7 +59,7 @@ void init_keypad() {
     gpio_pull_up(COL4);
 }
 
-// Função para ler a tecla pressionada no teclado matricial
+// Função para ler a tecla pressionada no teclado matricial - Geison
 char read_keypad() {
     const char keys[4][4] = {
         {'1', '2', '3', 'A'},
@@ -88,6 +91,7 @@ char read_keypad() {
     return ' '; // Nenhuma tecla pressionada
 }
 
+// Desenvolvida por: Emylle
 // Função para inicializar os LEDs
 void init_led() {
     gpio_init(RED);
@@ -114,7 +118,8 @@ void ativar_buzzer() {
     sleep_ms(3000);
 }
 
-//------------------------------------------------------
+
+// Função para mapear a tecla pressionada para ação correspondente - Gabriella e Geison
 void map_key_to_action(char key) {
     switch (key) {
         case '1': // Liga LED Vermelho
@@ -183,6 +188,7 @@ void map_key_to_action(char key) {
     }
 }
 
+// Função principal - Emylle e Geison
 int main() {
     stdio_init_all();
     init_led();
