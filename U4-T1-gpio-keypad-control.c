@@ -109,7 +109,7 @@ void ativar_buzzer() {
     sleep_ms(3000);
 }
 
-// Funções adicionais para o controle do buzzer - Gabriella e Geison
+// Funções adicionais para o controle do buzzer - Julierme
 void buzzer_pulse() {
     for (int i = 0; i < 5; i++) {
         gpio_put(BUZZER, true);
