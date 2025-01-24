@@ -101,6 +101,54 @@ void init_buzzer() {
     gpio_set_dir(BUZZER, GPIO_OUT);
 }
 
+// Função para inicializar o buzzer passivo - Geison
+void acionar_buzzer_passivo(uint32_t duration_ms, uint32_t freq_hz) {
+    uint32_t period_us = 1000000 / freq_hz; // Período em microssegundos
+    uint32_t half_period = period_us / 2;
+    uint32_t end_time = time_us_32() + (duration_ms * 1000);
+
+    while (time_us_32() < end_time) {
+        gpio_put(BUZZER, true);
+        sleep_us(half_period);
+        gpio_put(BUZZER, false);
+        sleep_us(half_period);
+    }
+}
+
+// Função que ativa o buzzer por 3 segundos com frequência de 2 kHz - Geison
+void ativar_buzzer2() {
+    acionar_buzzer_passivo(3000, 2000); // 3 segundos com frequência de 2 kHz
+}
+
+// Função que pulsa o buzzer 5 vezes com frequência de 2 kHz - Geison
+void buzzer_pulse2() {
+    for (int i = 0; i < 5; i++) {
+        acionar_buzzer_passivo(500, 2000); // 500 ms com frequência de 2 kHz
+        sleep_ms(500);                    // Pausa entre os pulsos
+    }
+}
+
+// Função que aciona um beep longo de 5 segundos com frequência de 1.5 kHz - Geison
+void buzzer_long_beep2() {
+    acionar_buzzer_passivo(5000, 1500); // 5 segundos com frequência de 1.5 kHz
+}
+
+// Função que aciona 10 beeps curtos de 200 ms com frequência de 3 kHz - Geison
+void buzzer_short_beeps2() {
+    for (int i = 0; i < 10; i++) {
+        acionar_buzzer_passivo(200, 3000); // 200 ms com frequência de 3 kHz
+        sleep_ms(200);
+    }
+}
+
+// Função que aciona 3 beeps alternados de 1 segundo com frequência de 2.5 kHz - Geison
+void buzzer_alternate_beeps2() {
+    for (int i = 0; i < 3; i++) {
+        acionar_buzzer_passivo(1000, 2500); // 1 segundo com frequência de 2.5 kHz
+        sleep_ms(500);                     // Pausa entre os beeps
+    }
+}
+
 // Função que ativa o buzzer por 3 segundos - Mario Vinicius
 void ativar_buzzer() {
     gpio_put(BUZZER, true);
@@ -109,7 +157,7 @@ void ativar_buzzer() {
     sleep_ms(3000);
 }
 
-// Funções adicionais para o controle do buzzer - Julierme
+// Funções adicionais para o controle do buzzer - Julierme 
 void buzzer_pulse() {
     for (int i = 0; i < 5; i++) {
         gpio_put(BUZZER, true);
@@ -195,19 +243,19 @@ void map_key_to_action(char key) {
             gpio_put(BLUE, !gpio_get(BLUE));
             break;
         case '*':
-            ativar_buzzer();
+            ativar_buzzer2();
             break;
         case 'A':
-            buzzer_pulse();
+            buzzer_pulse2();
             break;
         case 'B':
-            buzzer_long_beep();
+            buzzer_long_beep2();
             break;
         case 'C':
-            buzzer_short_beeps();
+            buzzer_short_beeps2();
             break;
         case 'D':
-            buzzer_alternate_beeps();
+            buzzer_alternate_beeps2();
             break;
         case '#':
             buzzer_off();
