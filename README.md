@@ -1,73 +1,83 @@
-# U4-T1-gpio-keypad-control
-## Tarefa 1 -Controle de pinos GPIO com o emprego de um teclado matricial. 
-## Descrição
-Este projeto implementa o controle de pinos GPIO de um microcontrolador RP2040 utilizando:
+# Controle de GPIO com Teclado Matricial - RP2040
 
-Teclado Matricial 4x4 (Atividade 1).
+## Descrição do Projeto
+Este projeto tem como objetivo controlar pinos GPIO utilizando um teclado matricial 4x4, integrado ao microcontrolador RP2040 presente na placa Raspberry Pi Pico W. Os componentes controlados incluem 3 LEDs RGB e um buzzer, simulando um sistema de acionamento básico para fins de aprendizado e prototipagem em sistemas embarcados.
 
-O objetivo é realizar o acionamento de LEDs RGB e um buzzer conforme as entradas fornecidas pelo teclado.
+## Funcionalidades
+- Controle individual de LEDs RGB (alteração de cores e estado on/off).
+- Ativação e desativação de um buzzer para gerar sinal sonoro.
+- Mapeamento de teclas do teclado matricial 4x4 para realizar as ações correspondentes.
+- Simulação completa no ambiente Wokwi, dispensando hardware físico.
 
-## Funcionalidades:
+## Requisitos do Sistema
+1. **Hardware Necessário:**
+   - Placa de desenvolvimento Raspberry Pi Pico W.
+   - Simulador Wokwi para testes.
+   - Teclado matricial 4x4 (simulado no Wokwi).
+   - LEDs RGB (3 unidades).
+   - Buzzer.
 
-Leitura de teclas pressionadas no teclado matricial.
-
-Controle individual dos LEDs RGB e do buzzer baseado nas teclas pressionadas.
-
-Mapeamento de teclas para ações:
-
-Tecla 1: Liga o LED vermelho.
-
-Tecla 2: Liga o LED verde.
-
-Tecla 3: Liga o LED azul.
-
-Tecla 4: Desliga o LED vermelho.
-
-Tecla 5: Desliga o LED verde.
-
-Tecla 6: Desliga o LED azul.
-
-Tecla 7: Liga o LED vermelho por 500 ms.
-
-Tecla 8: Liga o LED verde por 500 ms.
-
-Tecla 9: Liga o LED azul por 500 ms.
-
-Tecla 0: Alterna o estado de todos os LEDs.
-
-Tecla *: Ativa o buzzer.
-
-## Requisitos:
-
-Microcontrolador Raspberry Pi Pico W.
-
-Simulador Wokwi.
-
-Ambiente de desenvolvimento configurado com Pico SDK.
-
-## Execução:
-
-Compile e carregue o código no simulador Wokwi.
-
-Pressione as teclas no teclado matricial para acionar os LEDs.
+2. **Software e Ferramentas:**
+   - Ambiente de desenvolvimento VS Code.
+   - Pico SDK configurado para o RP2040.
+   - Git para versionamento de código.
 
 ## Configuração do Ambiente
+1. Clone este repositório:
+   ```bash
+   git clone https://github.com/embarcatech-grupo3-subgrupo5/U4-T1-gpio-keypad-control.git
+   ```
+2. Configure o Pico SDK no seu ambiente de desenvolvimento.
+3. Abra o projeto no VS Code e compile os arquivos.
+4. Execute a simulação no Wokwi, seguindo o arquivo de configuração fornecido no repositório.
 
-Instale o Pico SDK seguindo a documentação oficial.
+## Histórico de Contribuições
+### **Equipe e Funções:**
 
-Configure o simulador Wokwi para a Atividade .
+1. **Emylle:**
+   - Definição e inicialização dos pinos dos LEDs RGB.
+   - Desenvolvimento das funções para controle dos LEDs no código principal.
+   - Colaboração na implementação da função principal.
 
+2. **Mario Vinicius:**
+   - Definição e inicialização do pino do buzzer.
+   - Desenvolvimento de funções para ativar o buzzer e emissão de som simples.
 
-## Contribuição
+3. **Geison:**
+   - Definição dos pinos do teclado matricial.
+   - Desenvolvimento das funções de inicialização e leitura do teclado matricial.
+   - Implementação das funções de controle do buzzer passivo com diferentes frequências e padrões.
+   - Colaboração na função principal e mapeamento das teclas para ações específicas.
 
-Clone o repositório.
+4. **Julierme:**
+   - Implementação de funções adicionais para controle do buzzer (beeps curtos, longos e pulsos).
+   - Revisões e ajustes relacionados ao funcionamento do buzzer.
 
-Crie um branch para suas alterações.
+5. **Gabriella:**
+   - Colaboração no mapeamento das teclas do teclado matricial para as ações no sistema.
+   - Revisão e validação do código relacionado às ações mapeadas.
 
-Faça commits claros e frequentes.
+## Instruções de Uso
+1. Inicialize o simulador Wokwi.
+2. Utilize o teclado matricial para realizar as seguintes ações:
+   - Acender e apagar os LEDs RGB.
+   - Alterar a cor dos LEDs.
+   - Ativar o sinal sonoro no buzzer.
+3. Cada tecla do teclado está mapeada para uma função específica, como ilustrado no código fonte.
 
-Envie um pull request para revisão.
+## Contribuindo
+Se desejar contribuir com este projeto:
+1. Faça um fork do repositório.
+2. Crie um branch para sua funcionalidade:
+   ```bash
+   git checkout -b minha-funcionalidade
+   ```
+3. Faça commits claros e frequentes.
+4. Envie um pull request para revisão.
 
-# Vídeo Demonstrativo
+## Vídeo Demonstrativo
+Confira o funcionamento do projeto no vídeo [aqui](https://drive.google.com/drive/folders/162CqwnEsd-BY1bFBg7GOnQ0X8qpqYdgB?usp=sharing).
 
-Um vídeo mostrando o funcionamento do projeto está disponível no link: [https://drive.google.com/drive/folders/162CqwnEsd-BY1bFBg7GOnQ0X8qpqYdgB?usp=sharing]
+## Licença
+Este projeto é licenciado sob a MIT License.
+
