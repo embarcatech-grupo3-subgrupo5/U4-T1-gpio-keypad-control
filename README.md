@@ -2,6 +2,14 @@
 
 ![Image](https://github.com/user-attachments/assets/0fa0812b-6e31-411f-875e-13a1661fc317)
 
+
+---
+
+## Vídeo Demonstrativo
+Confira o funcionamento do projeto no vídeo [aqui](https://github.com/user-attachments/assets/320c4c2b-1179-4c3c-92c5-a69f94e57b3c).
+
+---
+
 ## Descrição do Projeto
 Este projeto tem como objetivo controlar pinos GPIO utilizando um teclado matricial 4x4, integrado ao microcontrolador RP2040 presente na placa Raspberry Pi Pico W. Os componentes controlados incluem 3 LEDs RGB e um buzzer, simulando um sistema de acionamento básico para fins de aprendizado e prototipagem em sistemas embarcados.
 
@@ -76,10 +84,3 @@ Se desejar contribuir com este projeto:
    ```
 3. Faça commits claros e frequentes.
 4. Envie um pull request para revisão.
-
-## Vídeo Demonstrativo
-Confira o funcionamento do projeto no vídeo [aqui](https://drive.google.com/drive/folders/162CqwnEsd-BY1bFBg7GOnQ0X8qpqYdgB?usp=sharing).
-
-## Licença
-Este projeto é licenciado sob a MIT License.
-
