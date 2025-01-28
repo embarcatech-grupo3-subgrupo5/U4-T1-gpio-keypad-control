@@ -1,7 +1,10 @@
 # Controle de GPIO com Teclado Matricial - RP2040
 
-![Image](https://github.com/user-attachments/assets/0fa0812b-6e31-411f-875e-13a1661fc317)
+---
 
+<div align="center">
+  <img src="https://github.com/user-attachments/assets/0fa0812b-6e31-411f-875e-13a1661fc317" alt="Descrição da imagem">
+</div>
 
 ---
 
